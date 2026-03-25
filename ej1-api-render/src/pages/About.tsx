@@ -12,7 +12,7 @@ export const About = () => {
         <li>Organizar la aplicación en componentes reutilizables.</li>
       </ul>
       <p>
-        Este proyecto fue creado como parte de un ejercicio de programación para un curso de desarrollo web. Sirve como un ejemplo práctico de cómo construir una aplicación React simple que interactúa con una API e implementa enrutamiento.
+        Creado para un ejercicio de programación para la carrera de Desarrollo Web FullStack dictada por CEPIT Tandil.
       </p>
     </div>
   )
