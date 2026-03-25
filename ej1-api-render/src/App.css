@@ -1,7 +1,125 @@
-main{
+.app-main {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  flex: 1;
+  padding: 18px 0 32px;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  padding: 18px 16px 14px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+}
+
+.app-header nav {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.app-header nav a {
+  text-decoration: none;
+  color: var(--text-h);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.app-header nav a:hover {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+}
+
+.app-header nav a[aria-current='page'] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.list-page {
+  width: 100%;
+}
+
+.list-page > h2 {
+  margin: 10px 0 18px;
+}
+
+.list-grid {
   gap: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 20px;
+  margin: 10px auto 0;
+}
+
+.list-page > p {
+  margin: 20px auto;
+  width: fit-content;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: color-mix(in oklab, var(--bg) 90%, #ffffff 10%);
+}
+
+.about-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 12px 4px;
+  text-align: left;
+}
+
+.about-page h2 {
+  margin: 8px 0 16px;
+}
+
+.about-page p {
+  margin-bottom: 12px;
+}
+
+.about-page ul {
+  margin: 0 0 14px;
+  padding-left: 22px;
+}
+
+.about-page li {
+  margin-bottom: 8px;
+}
+
+.app-footer {
+  border-top: 1px solid var(--border);
+  padding: 14px 16px;
+  margin-top: auto;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.app-footer p {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 700px) {
+  .app-main {
+    width: 95%;
+  }
+
+  .about-page {
+    text-align: center;
+  }
+
+  .about-page ul {
+    text-align: left;
+  }
 }
