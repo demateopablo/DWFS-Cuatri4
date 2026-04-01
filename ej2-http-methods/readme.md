@@ -1,4 +1,4 @@
->[!info]
+>[!note]
 >Les dejo el repo del proyecto
 >https://github.com/TurcoDev/3arroyos_4toCuatri/tree/nest-cont-intro
 >En el readme de ese repo les deje un resumen de lo que vimos
