@@ -1,0 +1,152 @@
+opencollection: 1.0.0
+info:
+  name: TPs
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ''
+      port: ''
+      auth:
+        username: ''
+        password: ''
+      bypassProxy: ''
+items:
+  - info:
+      name: Ej2
+      type: folder
+      seq: 1
+    request:
+      auth: inherit
+    items:
+      - info:
+          name: Get users
+          type: http
+          seq: 1
+        http:
+          method: GET
+          url: http://localhost:3000/users
+          auth: inherit
+        settings:
+          encodeUrl: true
+          timeout: 0
+          followRedirects: true
+          maxRedirects: 5
+      - info:
+          name: Get user
+          type: http
+          seq: 2
+        http:
+          method: GET
+          url: http://localhost:3000/users/{{id}}
+          auth: inherit
+        runtime:
+          variables:
+            - name: id
+              value: '1'
+        settings:
+          encodeUrl: true
+          timeout: 0
+          followRedirects: true
+          maxRedirects: 5
+      - info:
+          name: Delete user
+          type: http
+          seq: 3
+        http:
+          method: DELETE
+          url: http://localhost:3000/users/{{id}}
+          auth: inherit
+        runtime:
+          variables:
+            - name: id
+              value: '1'
+        settings:
+          encodeUrl: true
+          timeout: 0
+          followRedirects: true
+          maxRedirects: 5
+      - info:
+          name: Create user
+          type: http
+          seq: 4
+        http:
+          method: POST
+          url: http://localhost:3000/users
+          body:
+            type: json
+            data: |-
+              {
+                  "id": 1,
+                  "name": "Gustavo",
+                  "age": 42,
+                  "email": "gustavo@gmail.com"
+                }
+          auth: inherit
+        runtime:
+          variables:
+            - name: id
+              value: '1'
+        settings:
+          encodeUrl: true
+          timeout: 0
+          followRedirects: true
+          maxRedirects: 5
+      - info:
+          name: Edit user
+          type: http
+          seq: 5
+        http:
+          method: PUT
+          url: http://localhost:3000/users/{{id}}
+          body:
+            type: json
+            data: |-
+              {
+                  "id": 1,
+                  "name": "Gustavo",
+                  "age": 42,
+                  "email": "gustavo@gmail.com"
+                }
+          auth: inherit
+        runtime:
+          variables:
+            - name: id
+              value: '66'
+        settings:
+          encodeUrl: true
+          timeout: 0
+          followRedirects: true
+          maxRedirects: 5
+      - info:
+          name: Edit user 2
+          type: http
+          seq: 6
+        http:
+          method: PATCH
+          url: http://localhost:3000/users/1
+          body:
+            type: json
+            data: |-
+              {
+                "id": 55
+              }
+          auth: inherit
+        runtime:
+          variables:
+            - name: id
+              value: '1'
+        settings:
+          encodeUrl: true
+          timeout: 0
+          followRedirects: true
+          maxRedirects: 5
+bundled: true
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git
+    exportedAt: '2026-04-02T00:42:51.127Z'
+    exportedUsing: Bruno

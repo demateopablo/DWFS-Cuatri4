@@ -1,9 +1,12 @@
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { User } from './interfaces/User.interface';
 
 @Injectable()
 export class AppService {
-
   private users: User[] = [
     { id: 1, name: 'Gustavo', age: 42, email: 'gustavo@gmail.com' },
     { id: 2, name: 'Pablo', age: 50, email: 'pablo@gmail.com' },
@@ -24,7 +27,7 @@ export class AppService {
     return user;
   }
 
-  postUser(newUser: User): String {
+  postUser(newUser: User): string {
     const { id, name, age, email } = newUser;
 
     if (
@@ -37,11 +40,15 @@ export class AppService {
     }
 
     if (!Number.isInteger(id) || id <= 0) {
-      throw new BadRequestException('El id debe ser un número entero mayor a 0');
+      throw new BadRequestException(
+        'El id debe ser un número entero mayor a 0',
+      );
     }
 
     if (!Number.isInteger(age) || age <= 0) {
-      throw new BadRequestException('La edad debe ser un número entero mayor a 0');
+      throw new BadRequestException(
+        'La edad debe ser un número entero mayor a 0',
+      );
     }
 
     const emailNormalized = email.trim().toLowerCase();
@@ -74,19 +81,20 @@ export class AppService {
     return 'Usuario creado con éxito';
   }
 
-  deleteUser(id: number): String {
+  deleteUser(id: number): string {
     const userIndex = this.userIndex(id);
-    if (userIndex !== -1) { //TODO: falta refactorizar para no repetir esta validacion en varios metodos
+    if (userIndex !== -1) {
+      //TODO: falta refactorizar para no repetir esta validacion en varios metodos
       this.users.splice(userIndex, 1);
       console.log('Usuario eliminado');
-    }else{
+    } else {
       console.log('Usuario no encontrado');
       throw new NotFoundException('Usuario no encontrado');
     }
     return 'Usuario eliminado con éxito';
   }
 
-  updateUser(id: number, updatedUser: Partial<User>): String {
+  updateUser(id: number, updatedUser: Partial<User>): string {
     const userIndex = this.userIndex(id);
     if (userIndex !== -1) {
       this.users[userIndex] = { ...this.users[userIndex], ...updatedUser };
