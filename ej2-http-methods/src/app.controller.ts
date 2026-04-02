@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Delete, Put, Body, Param, Patch } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Delete,
+  Put,
+  Body,
+  Param,
+  Patch,
+} from '@nestjs/common';
 import { AppService } from './app.service';
 import type { User } from './interfaces/User.interface';
 
@@ -17,22 +26,25 @@ export class AppController {
   }
 
   @Post('/users')
-  postUser(@Body() newUser: User): String{
+  postUser(@Body() newUser: User): string {
     return this.appService.postUser(newUser);
   }
 
   @Delete('/users/:id')
-  deleteUser(@Param('id') id: string): String{
+  deleteUser(@Param('id') id: string): string {
     return this.appService.deleteUser(parseInt(id));
   }
 
   @Put('/users/:id')
-  updateUser(@Param('id') id: string, @Body() updatedUser: User): String {
+  updateUser(@Param('id') id: string, @Body() updatedUser: User): string {
     return this.appService.updateUser(parseInt(id), updatedUser);
   }
 
   @Patch('/users/:id')
-  patchUser(@Param('id') id: string, @Body() updatedUser: Partial<User>): String {
+  patchUser(
+    @Param('id') id: string,
+    @Body() updatedUser: Partial<User>,
+  ): string {
     return this.appService.updateUser(parseInt(id), updatedUser);
   }
 }
