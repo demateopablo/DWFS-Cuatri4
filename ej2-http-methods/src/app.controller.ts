@@ -16,7 +16,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get('/users')
-  getHello(): User[] {
+  getUsers(): User[] {
     return this.appService.getUsers();
   }
 
